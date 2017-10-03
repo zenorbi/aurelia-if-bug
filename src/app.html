@@ -1,0 +1,27 @@
+<template>
+  <require from="./resources/elements/test-element"></require>
+  <h1>Aurelia if custom-attribute bug</h1>
+
+  <h2>How to reproduce this bug</h2>
+  <ol>
+    <li>
+      Click on "Show test element". This binds the <code>test-element</code>.
+    </li>
+    <li>
+      See that clicking on "Test binding" works.
+    </li>
+    <li>
+      Uncheck the checkbox, triggering a <code>view.unbind()</code> then check it again, triggering a new <code>view.bind()</code>.
+    </li>
+    <li>
+      See that clicking on "Test binding" doesn't do anything, it's missing the event listener.
+    </li>
+  </ol>
+
+  <p>
+    <label>
+      Show test element: <input type="checkbox" checked.bind="showTestElement">
+    </label>
+  </p>
+  <test-element if.bind="showTestElement"></test-element>
+</template>
